@@ -9,6 +9,6 @@ terraform {
   backend "s3" {
     bucket = "<SET TO YOUR BUCKET NAME>"
     region = "us-east-1"
-    
+
   }
 }

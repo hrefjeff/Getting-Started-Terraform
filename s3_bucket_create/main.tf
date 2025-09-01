@@ -4,9 +4,9 @@ provider "aws" {
 }
 
 # Create S3 bucket with versioning and encryption
-resource "aws_s3_bucket" "taco_wagon" {
-  bucket_prefix  = "taco-wagon"
-  force_destroy  = true
+resource "aws_s3_bucket" "black_hole" {
+  bucket_prefix = "black-hole"
+  force_destroy = true
 
   tags = {
     Environment = "terraform-demo"
@@ -15,16 +15,16 @@ resource "aws_s3_bucket" "taco_wagon" {
 }
 
 # Configure versioning for the S3 bucket
-resource "aws_s3_bucket_versioning" "taco_wagon_versioning" {
-  bucket = aws_s3_bucket.taco_wagon.id
+resource "aws_s3_bucket_versioning" "black_hole_versioning" {
+  bucket = aws_s3_bucket.black_hole.id
   versioning_configuration {
     status = "Enabled"
   }
 }
 
 # Configure server-side encryption for the S3 bucket
-resource "aws_s3_bucket_server_side_encryption_configuration" "taco_wagon_encryption" {
-  bucket = aws_s3_bucket.taco_wagon.id
+resource "aws_s3_bucket_server_side_encryption_configuration" "black_hole_encryption" {
+  bucket = aws_s3_bucket.black_hole.id
 
   rule {
     apply_server_side_encryption_by_default {
@@ -34,8 +34,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "taco_wagon_encryp
 }
 
 # Block public access to the bucket
-resource "aws_s3_bucket_public_access_block" "taco_wagon_pab" {
-  bucket = aws_s3_bucket.taco_wagon.id
+resource "aws_s3_bucket_public_access_block" "black_hole_pab" {
+  bucket = aws_s3_bucket.black_hole.id
 
   block_public_acls       = true
   block_public_policy     = true
