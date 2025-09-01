@@ -1,0 +1,3 @@
+region = "us-east-1"
+bucket = "black-hole20250901015630682000000001"
+key    = "black-hole.tfstate"
